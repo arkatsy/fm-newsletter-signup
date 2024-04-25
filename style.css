@@ -7,9 +7,11 @@
 }
 
 input,
-button {
+button,
+dialog {
   font-family: inherit;
   font-size: inherit;
+  color: inherit;
 }
 
 @keyframes fade-in {
@@ -39,6 +41,7 @@ button {
   --mobile-illustration: url("./images/illustration-sign-up-mobile.svg");
   --desktop-illustration: url("./images/illustration-sign-up-desktop.svg");
   --list-style-checkmark: url("./images/icon-list.svg");
+  --success-dialog-checkmark: url("./images/icon-success.svg");
 
   --primary: hsl(4, 100%, 67%);
   --neutral-dark-slate-gray: hsl(234, 29%, 20%);
@@ -100,7 +103,6 @@ body {
   display: flex;
   flex-direction: column;
   background: var(--white);
-  box-shadow: 0 10px 25px 20px rgba(0, 0, 0, 0.1);
 
   animation: fade-in 300ms ease;
 
@@ -114,6 +116,7 @@ body {
     border-radius: 20px;
     padding: 1.8rem;
     max-height: 650px;
+    box-shadow: 0 10px 25px 20px rgba(0, 0, 0, 0.1);
   }
 }
 
@@ -237,4 +240,70 @@ body {
 
 .newsletter-form button:hover {
   background: var(--primary);
+}
+
+#success-dialog {
+  animation: fade-in 300ms ease;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  border-radius: 12px;
+  max-width: 380px;
+}
+
+#dialog-container {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+#success-dialog h1 {
+  line-height: 1;
+}
+
+#success-dialog .check {
+  background: var(--success-dialog-checkmark) no-repeat;
+  width: 64px;
+  aspect-ratio: 1 / 1;
+  transform: scale(0.8);
+}
+
+#dialog-container button {
+  --radius: 10px;
+
+  font-weight: var(--font-bold);
+
+  padding: 1rem;
+  background: var(--neutral-dark-slate-gray);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+#dialog-container button:hover {
+  background: var(--primary);
+}
+
+#insert-email {
+  font-weight: var(--font-bold);
+}
+
+@keyframes fade-in-backdrop {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+  animation: fade-in-backdrop 300ms ease;
 }
