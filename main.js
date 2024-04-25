@@ -15,4 +15,5 @@ form.addEventListener("submit", (e) => {
 function addInfoToModal(email) {
   const insertEmailNode = document.getElementById("insert-email");
   insertEmailNode.textContent = email;
+  form.reset();
 }
